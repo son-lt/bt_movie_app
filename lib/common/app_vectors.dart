@@ -6,4 +6,5 @@ class AppVectors {
 
   static const String voiceVector = 'assets/vectors/voice.svg';
 
+  static const String imdbBadgeVector = 'assets/vectors/imdb_badge.svg';
 }
