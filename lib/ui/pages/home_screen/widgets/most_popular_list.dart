@@ -55,17 +55,17 @@ class _MostPopularListState extends State<MostPopularList> {
     return AnimatedContainer(
       margin: EdgeInsets.symmetric(
         horizontal: 12,
-        vertical: isCenter ? 16 : 36,
+        vertical: isCenter ? 16 : 28,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(isCenter ? 30 : 20),
+        borderRadius: BorderRadius.circular(30),
         color: Colors.deepOrange,
       ),
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOutCubic,
       child: Stack(
         children: [
-          if (!isCenter) const InactiveOverlay(radius: 20),
+          if (!isCenter) const InactiveOverlay(),
           Positioned(
             bottom: 20,
             left: 0,

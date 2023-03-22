@@ -13,7 +13,13 @@ class SearchBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: AppColors.tertiaryColor,
+        gradient: LinearGradient(
+          colors: AppColors.linearSearchBarBackgroundColor,
+        ),
+        border: Border.all(
+          color: AppColors.tertiaryColor,
+          width: 1,
+        ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -48,7 +54,7 @@ class SearchBar extends StatelessWidget {
             color: AppColors.secondaryColor,
             thickness: 1,
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: 16),
           SvgPicture.asset(
             AppVectors.voiceVector,
             width: 16,

@@ -6,6 +6,16 @@ class AppColors {
     Color(0xFF4E4376),
   ];
 
+  static List<Color> linearSearchBarBackgroundColor = [
+    const Color(0xFF6B66A6).withOpacity(0.3),
+    const Color(0xFF75D1DD).withOpacity(0.3),
+  ];
+
+  static List<Color> linearOptionItemBackgroundColor = [
+    const Color(0xFFA6A1E0).withOpacity(0.3),
+    const Color(0xFFA1F3FE).withOpacity(0.3),
+  ];
+
   static List<Color> linearBackgroundIndicatorDot({
     required double opacity1,
     double? opacity2,

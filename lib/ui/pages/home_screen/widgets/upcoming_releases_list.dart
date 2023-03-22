@@ -49,7 +49,7 @@ class _UpcomingReleasesListState extends State<UpcomingReleasesList> {
       ),
       child: Stack(
         children: [
-          if (!isCenter) const InactiveOverlay(radius: 30),
+          if (!isCenter) const InactiveOverlay(),
         ],
       ),
     );

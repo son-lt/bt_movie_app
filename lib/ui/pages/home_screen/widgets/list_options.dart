@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ListOptions extends StatelessWidget {
-  const ListOptions ({super.key});
+  const ListOptions({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,16 @@ class ListOptions extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 1 / 6,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: AppColors.tertiaryColor,
+                border: Border.all(
+                  color: AppColors.tertiaryColor,
+                  width: 1,
+                ),
+                gradient: LinearGradient(
+                  colors: AppColors.linearOptionItemBackgroundColor,
+                ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
@@ -37,7 +43,6 @@ class ListOptions extends StatelessWidget {
                       BlendMode.srcIn,
                     ),
                   ),
-                  const SizedBox(height: 8),
                   Text(
                     AppConfigs.listOptions.keys.elementAt(index),
                     style: const TextStyle(

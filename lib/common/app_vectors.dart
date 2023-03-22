@@ -15,4 +15,15 @@ class AppVectors {
   static const String moviesVector = 'assets/vectors/movies.svg';
 
   static const String inTheatreVector = 'assets/vectors/in_theatre.svg';
+
+  static const String homeVector = 'assets/vectors/home.svg';
+
+  static const String favoriteVector = 'assets/vectors/favorite.svg';
+
+  static const String ticketVector = 'assets/vectors/ticket.svg';
+
+  static const String accountVector = 'assets/vectors/account.svg';
+
+  static const String shuffleVector = 'assets/vectors/shuffle.svg';
+
 }

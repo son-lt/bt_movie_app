@@ -1,4 +1,5 @@
 import 'package:bt_movie_app/common/app_colors.dart';
+import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list.dart';
@@ -16,61 +17,70 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: AppColors.linearBackgroundColor,
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
-        ),
-        child: SafeArea(
-          child: ListView(
-            children: const [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 64),
-                child: HelloBar(),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 52),
-                child: SearchBar(),
-              ),
-              SizedBox(height: 28),
-              Padding(
-                padding: EdgeInsets.only(left: 52),
-                child: Text(
-                  'Most Popular',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              MostPopularList(),
-              SizedBox(height: 4),
-              ListOptions(),
-              SizedBox(height: 36),
-              Padding(
-                padding: EdgeInsets.only(left: 52, bottom: 16),
-                child: Text(
-                  'Upcoming releases',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              UpcomingReleasesList(),
-            ],
-          ),
-        ),
+    return SafeArea(
+      child: Scaffold(
+        body: buildBody(),
+        // bottomNavigationBar: buildBottomNavigationBar(),
       ),
     );
   }
+
+  Widget buildBody() {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: AppColors.linearBackgroundColor,
+        ),
+      ),
+      child: ListView(
+        children: const [
+          SizedBox(height: 32),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 64),
+            child: HelloBar(),
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 52),
+            child: SearchBar(),
+          ),
+          SizedBox(height: 28),
+          Padding(
+            padding: EdgeInsets.only(left: 52),
+            child: Text(
+              'Most Popular',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          MostPopularList(),
+          SizedBox(height: 4),
+          ListOptions(),
+          SizedBox(height: 36),
+          Padding(
+            padding: EdgeInsets.only(left: 52, bottom: 16),
+            child: Text(
+              'Upcoming releases',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          UpcomingReleasesList(),
+        ],
+      ),
+    );
+  }
+
+  // Widget buildBottomNavigationBar() {
+  //   return BottomNavigationBar(
+  //     items: AppConfigs.bottomNavigationBarItemList,
+  //
+  //   );
+  // }
 }
