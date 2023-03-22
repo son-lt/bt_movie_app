@@ -6,10 +6,13 @@ class AppColors {
     Color(0xFF4E4376),
   ];
 
-  static List<Color> linearBackgroundIndicatorDot(double opacity) {
+  static List<Color> linearBackgroundIndicatorDot({
+    required double opacity1,
+    double? opacity2,
+  }) {
     return [
-      const Color(0xFF64ABDB).withOpacity(opacity),
-      const Color(0xFF826EC8).withOpacity(opacity),
+      const Color(0xFF64ABDB).withOpacity(opacity1),
+      const Color(0xFF826EC8).withOpacity(opacity2 ?? opacity1),
     ];
   }
 

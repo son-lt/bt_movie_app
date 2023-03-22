@@ -1,6 +1,8 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
+import 'package:bt_movie_app/ui/commons/app_page_view.dart';
+import 'package:bt_movie_app/ui/commons/inactive_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,7 +14,7 @@ class MostPopularList extends StatefulWidget {
 }
 
 class _MostPopularListState extends State<MostPopularList> {
-  int listLength = AppConfigs.listLength * 2;
+  int listLength = AppConfigs.listLength;
   late PageController _pageController;
   int currentPage = 0;
 
@@ -24,48 +26,46 @@ class _MostPopularListState extends State<MostPopularList> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 1 / 6,
-          width: MediaQuery.of(context).size.width,
-          child: PageView.builder(
-            controller: _pageController,
-            pageSnapping: true,
-            scrollDirection: Axis.horizontal,
-            physics: const ClampingScrollPhysics(),
-            onPageChanged: (value) {
-              setState(() {
-                currentPage = value;
-              });
-            },
-            itemBuilder: (BuildContext context, int index) {
-              bool isCenter = currentPage == index;
-              return mostPopularItem(isCenter);
-            },
-            itemCount: listLength,
-          ),
-        ),
-        buildIndicator(),
-      ],
+    return AppPageView(
+      pageController: _pageController,
+      onPageChange: (value) {
+        setState(() {
+          currentPage = value;
+        });
+      },
+      currentPage: currentPage,
+      itemBuilder: (BuildContext context, int index) {
+        bool isCenter = currentPage == index;
+        return mostPopularItem(
+          title: 'Loren Ipsum something something something',
+          score: '8.5',
+          isCenter: isCenter,
+        );
+      },
+      length: listLength,
+      heightScaleFactor: 1 / 6,
     );
   }
 
-  Widget mostPopularItem(bool isCenter) {
+  Widget mostPopularItem({
+    required String title,
+    required String score,
+    required bool isCenter,
+  }) {
     return AnimatedContainer(
       margin: EdgeInsets.symmetric(
-        horizontal: 20,
+        horizontal: 12,
         vertical: isCenter ? 16 : 36,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(isCenter ? 30 : 20),
-        color: Colors.red,
+        color: Colors.deepOrange,
       ),
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOutCubic,
       child: Stack(
         children: [
+          if (!isCenter) const InactiveOverlay(radius: 20),
           Positioned(
             bottom: 20,
             left: 0,
@@ -81,7 +81,7 @@ class _MostPopularListState extends State<MostPopularList> {
                     color: Colors.yellow,
                     width: MediaQuery.of(context).size.width * 0.5 - 76,
                     child: Text(
-                      'Loren ipsum something something something',
+                      title,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 18,
@@ -91,7 +91,7 @@ class _MostPopularListState extends State<MostPopularList> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  imdbBadge('8.5'),
+                  imdbBadge(score),
                 ],
               ),
             ),
@@ -122,45 +122,6 @@ class _MostPopularListState extends State<MostPopularList> {
           )
         ],
       ),
-    );
-  }
-
-  Widget buildIndicator() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: buildListDot(),
-      ),
-    );
-  }
-
-  List<Widget> buildListDot() {
-    return List<Widget>.generate(
-      AppConfigs.listLength,
-      (index) {
-        return Container(
-          width: 8,
-          height: 8,
-          margin: const EdgeInsets.symmetric(horizontal: 4),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-              colors: AppColors.linearBackgroundIndicatorDot(
-                ((currentPage >= AppConfigs.listLength)
-                            ? currentPage - AppConfigs.listLength
-                            : currentPage) ==
-                        index
-                    ? 1
-                    : 0.3,
-              ),
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        );
-      },
     );
   }
 }

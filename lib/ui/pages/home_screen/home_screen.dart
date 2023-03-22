@@ -1,7 +1,9 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/search_bar.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -50,6 +52,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               MostPopularList(),
+              SizedBox(height: 4),
+              ListOptions(),
+              SizedBox(height: 36),
+              Padding(
+                padding: EdgeInsets.only(left: 52, bottom: 16),
+                child: Text(
+                  'Upcoming releases',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              UpcomingReleasesList(),
             ],
           ),
         ),
