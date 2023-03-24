@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
       SystemUiMode.manual,
       overlays: [],
     );
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.portraitUp,
+      ],
+    );
     return MaterialApp(
       title: 'Movie App',
       theme: ThemeData(

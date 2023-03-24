@@ -6,13 +6,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
 
-  const CustomBottomNavigationBar({Key? key, required this.currentIndex})
-      : super(key: key);
+  const CustomBottomNavigationBar({
+    Key? key,
+    required this.currentIndex,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 1 / 10,
+      height: MediaQuery.of(context).size.height * 1 / 12,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         border: Border.all(
@@ -22,9 +24,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
         gradient: LinearGradient(
           colors: AppColors.gradientSearchBarBackgroundColor,
         ),
-        color: AppColors.tertiaryColor,
       ),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 60),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: buildIcon(currentIndex),
@@ -37,29 +38,32 @@ class CustomBottomNavigationBar extends StatelessWidget {
       AppConfigs.bottomNavigationBarVectorList.length,
       (index) {
         bool isChoose = currentIndex == index;
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              AppConfigs.bottomNavigationBarVectorList[index],
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(
-                AppColors.primaryColor,
-                BlendMode.srcIn,
-              ),
-            ),
-            const SizedBox(height: 8),
-            if (isChoose)
-              Container(
-                width: 8,
-                height: 8,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
+        return InkWell(
+          onTap: () {},
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgPicture.asset(
+                AppConfigs.bottomNavigationBarVectorList[index],
+                width: 24,
+                height: 24,
+                colorFilter: ColorFilter.mode(
+                  AppColors.primaryColor,
+                  BlendMode.srcIn,
                 ),
-              )
-          ],
+              ),
+              const SizedBox(height: 8),
+              if (isChoose)
+                Container(
+                  width: 4,
+                  height: 4,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                  ),
+                )
+            ],
+          ),
         );
       },
     );

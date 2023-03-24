@@ -1,5 +1,6 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
+import 'package:bt_movie_app/ui/commons/custom_bottom_navigation_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list.dart';
@@ -15,15 +16,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int currentPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: buildBody(),
-        // bottomNavigationBar: buildBottomNavigationBar(),
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: currentPage,
+        ),
       ),
     );
   }
+
 
   Widget buildBody() {
     return Container(
