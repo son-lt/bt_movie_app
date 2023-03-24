@@ -10,7 +10,7 @@ class InactiveOverlay extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         gradient: LinearGradient(
-          colors: AppColors.linearBackgroundIndicatorDot(
+          colors: AppColors.gradientBackgroundIndicatorDot(
             opacity1: 0.5,
             opacity2: 0.1,
           ),

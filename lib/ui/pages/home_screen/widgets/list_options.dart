@@ -27,11 +27,11 @@ class ListOptions extends StatelessWidget {
                   width: 1,
                 ),
                 gradient: LinearGradient(
-                  colors: AppColors.linearOptionItemBackgroundColor,
+                  colors: AppColors.gradientOptionItemBackgroundColor,
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
@@ -43,6 +43,7 @@ class ListOptions extends StatelessWidget {
                       BlendMode.srcIn,
                     ),
                   ),
+                  const SizedBox(height: 8),
                   Text(
                     AppConfigs.listOptions.keys.elementAt(index),
                     style: const TextStyle(

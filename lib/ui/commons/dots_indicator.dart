@@ -30,7 +30,7 @@ class DotsIndicator extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(
-              colors: AppColors.linearBackgroundIndicatorDot(
+              colors: AppColors.gradientBackgroundIndicatorDot(
                 opacity1: ((currentPage >= AppConfigs.listLength)
                             ? currentPage - AppConfigs.listLength
                             : currentPage) ==

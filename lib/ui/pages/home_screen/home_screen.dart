@@ -29,10 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          colors: AppColors.linearBackgroundColor,
+          colors: AppColors.gradientBackgroundColor,
         ),
       ),
       child: ListView(
+        physics: const ClampingScrollPhysics(),
         children: const [
           SizedBox(height: 32),
           Padding(
@@ -76,11 +77,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  // Widget buildBottomNavigationBar() {
-  //   return BottomNavigationBar(
-  //     items: AppConfigs.bottomNavigationBarItemList,
-  //
-  //   );
-  // }
 }

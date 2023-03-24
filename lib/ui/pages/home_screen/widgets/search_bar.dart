@@ -9,12 +9,12 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: MediaQuery.of(context).size.height * 1 / 17,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(
-          colors: AppColors.linearSearchBarBackgroundColor,
+          colors: AppColors.gradientSearchBarBackgroundColor,
         ),
         border: Border.all(
           color: AppColors.tertiaryColor,
@@ -27,8 +27,8 @@ class SearchBar extends StatelessWidget {
         children: [
           SvgPicture.asset(
             AppVectors.searchVector,
-            width: 22,
-            height: 22,
+            width: 24,
+            height: 24,
             colorFilter: ColorFilter.mode(
               AppColors.primaryColor,
               BlendMode.srcIn,
@@ -58,7 +58,7 @@ class SearchBar extends StatelessWidget {
           SvgPicture.asset(
             AppVectors.voiceVector,
             width: 16,
-            height: 22,
+            height: 24,
             colorFilter: ColorFilter.mode(
               AppColors.secondaryColor,
               BlendMode.srcIn,
