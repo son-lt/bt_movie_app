@@ -5,10 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
+  final void Function(int) onPageChange;
 
   const CustomBottomNavigationBar({
     Key? key,
     required this.currentIndex,
+    required this.onPageChange,
   }) : super(key: key);
 
   @override
@@ -21,14 +23,22 @@ class CustomBottomNavigationBar extends StatelessWidget {
           color: AppColors.tertiaryColor,
           width: 1,
         ),
-        gradient: LinearGradient(
-          colors: AppColors.gradientSearchBarBackgroundColor,
+        gradient: const LinearGradient(
+          colors: AppColors.gradientBackgroundColor,
         ),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 60),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: buildIcon(currentIndex),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: AppColors.gradientSearchBarBackgroundColor,
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 60),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: buildIcon(currentIndex),
+        ),
       ),
     );
   }
@@ -39,7 +49,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
       (index) {
         bool isChoose = currentIndex == index;
         return InkWell(
-          onTap: () {},
+          onTap: () {
+            onPageChange(index);
+          },
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -48,18 +60,21 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 width: 24,
                 height: 24,
                 colorFilter: ColorFilter.mode(
-                  AppColors.primaryColor,
+                  isChoose ? Colors.white : AppColors.primaryColor,
                   BlendMode.srcIn,
                 ),
               ),
               const SizedBox(height: 8),
-              if (isChoose)
-                Container(
-                  width: 4,
-                  height: 4,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
+                Visibility(
+                  visible: isChoose,
+                  replacement: const SizedBox(height: 4),
+                  child: Container(
+                    width: 4,
+                    height: 4,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
                   ),
                 )
             ],

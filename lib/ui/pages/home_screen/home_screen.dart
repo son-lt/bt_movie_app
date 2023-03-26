@@ -1,5 +1,4 @@
 import 'package:bt_movie_app/common/app_colors.dart';
-import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:bt_movie_app/ui/commons/custom_bottom_navigation_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
@@ -25,6 +24,11 @@ class _HomeScreenState extends State<HomeScreen> {
         body: buildBody(),
         bottomNavigationBar: CustomBottomNavigationBar(
           currentIndex: currentPage,
+          onPageChange: (value) {
+            setState(() {
+              currentPage = value;
+            });
+          },
         ),
       ),
     );

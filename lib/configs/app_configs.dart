@@ -17,4 +17,10 @@ class AppConfigs {
     AppVectors.accountVector,
     AppVectors.shuffleVector,
   ];
+
+  static const String apiKey = '9bb89316d8693b06d7a84980b29c011f';
+
+  static const String baseUrl = 'https://api.themoviedb.org/3/movie/';
+
+  static const Duration timeout = Duration(milliseconds: 60000);
 }
