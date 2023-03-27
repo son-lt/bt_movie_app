@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: ListView(
         physics: const ClampingScrollPhysics(),
-        children: const [
+        children: [
           SizedBox(height: 32),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 64),
@@ -67,7 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          MostPopularList(),
+          Builder(
+            builder: (context) {
+              return MostPopularList();
+            }
+          ),
           SizedBox(height: 4),
           ListOptions(),
           SizedBox(height: 36),
