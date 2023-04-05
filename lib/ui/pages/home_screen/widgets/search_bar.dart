@@ -1,4 +1,5 @@
 import 'package:bt_movie_app/common/app_colors.dart';
+import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,10 +44,7 @@ class SearchBar extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 border: InputBorder.none,
                 hintText: 'Search',
-                hintStyle: TextStyle(
-                  color: AppColors.secondaryColor,
-                  fontSize: 18,
-                ),
+                hintStyle: AppTextStyles.secondaryS18,
               ),
             ),
           ),

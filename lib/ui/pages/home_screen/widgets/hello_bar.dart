@@ -1,4 +1,5 @@
 import 'package:bt_movie_app/common/app_colors.dart';
+import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,12 +13,12 @@ class HelloBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         RichText(
-          text: const TextSpan(
-            style: TextStyle(fontSize: 18),
-            children: [
+          text: TextSpan(
+            style: AppTextStyles.whiteS18,
+            children: const [
               TextSpan(text: 'Hello, '),
               TextSpan(
-                text: 'User!',
+                text: 'Tuấn Đờ Quy!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),

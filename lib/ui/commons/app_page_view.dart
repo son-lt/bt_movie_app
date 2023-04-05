@@ -26,7 +26,6 @@ class AppPageView extends StatelessWidget {
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height * heightScaleFactor,
-          width: MediaQuery.of(context).size.width,
           child: PageView.builder(
             controller: pageController,
             pageSnapping: true,

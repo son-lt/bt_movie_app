@@ -22,5 +22,7 @@ class AppConfigs {
 
   static const String baseUrl = 'https://api.themoviedb.org/3/movie';
 
+  static const String baseImageURL = 'https://image.tmdb.org/t/p/original';
+
   static const Duration timeout = Duration(milliseconds: 60000);
 }

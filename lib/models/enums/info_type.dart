@@ -1,0 +1,4 @@
+enum InfoType {
+  detail,
+  cast
+}

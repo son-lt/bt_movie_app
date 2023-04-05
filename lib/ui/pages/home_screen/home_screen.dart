@@ -1,4 +1,5 @@
 import 'package:bt_movie_app/common/app_colors.dart';
+import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:bt_movie_app/ui/commons/custom_bottom_navigation_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
@@ -34,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   Widget buildBody() {
     return Container(
       decoration: const BoxDecoration(
@@ -45,48 +45,36 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
-          SizedBox(height: 32),
-          Padding(
+          const SizedBox(height: 32),
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 64),
             child: HelloBar(),
           ),
-          SizedBox(height: 20),
-          Padding(
+          const SizedBox(height: 20),
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 52),
             child: SearchBar(),
           ),
-          SizedBox(height: 28),
+          const SizedBox(height: 28),
           Padding(
-            padding: EdgeInsets.only(left: 52),
+            padding: const EdgeInsets.only(left: 52),
             child: Text(
               'Most Popular',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
-                color: Colors.white,
-              ),
+              style: AppTextStyles.whiteS18Bold
             ),
           ),
-          Builder(
-            builder: (context) {
-              return MostPopularList();
-            }
-          ),
-          SizedBox(height: 4),
-          ListOptions(),
-          SizedBox(height: 36),
+          const MostPopularList(),
+          const SizedBox(height: 4),
+          const ListOptions(),
+          const SizedBox(height: 36),
           Padding(
-            padding: EdgeInsets.only(left: 52, bottom: 16),
+            padding: const EdgeInsets.only(left: 52, bottom: 16),
             child: Text(
               'Upcoming releases',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
-                color: Colors.white,
-              ),
+              style: AppTextStyles.whiteS18Bold
             ),
           ),
-          UpcomingReleasesList(),
+          const UpcomingReleasesList(),
         ],
       ),
     );

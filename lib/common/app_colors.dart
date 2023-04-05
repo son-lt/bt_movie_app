@@ -6,12 +6,12 @@ class AppColors {
     Color(0xFF4E4376),
   ];
 
-  static List<Color> gradientSearchBarBackgroundColor = [
+  static final List<Color> gradientSearchBarBackgroundColor = [
     const Color(0xFF6B66A6).withOpacity(0.3),
     const Color(0xFF75D1DD).withOpacity(0.3),
   ];
 
-  static List<Color> gradientOptionItemBackgroundColor = [
+  static final List<Color> gradientOptionItemBackgroundColor = [
     const Color(0xFFA6A1E0).withOpacity(0.3),
     const Color(0xFFA1F3FE).withOpacity(0.3),
   ];
@@ -26,11 +26,17 @@ class AppColors {
     ];
   }
 
-  static Color primaryColor = Colors.white.withOpacity(0.75);
+  static final Color baseShimmerColor =
+      const Color(0xFF64ABDB).withOpacity(0.5);
 
-  static Color secondaryColor = Colors.white.withOpacity(0.5);
+  static final Color highlightShimmerColor =
+      const Color(0xFF826EC8).withOpacity(0.1);
 
-  static Color tertiaryColor = Colors.white.withOpacity(0.2);
+  static final Color primaryColor = Colors.white.withOpacity(0.75);
+
+  static final Color secondaryColor = Colors.white.withOpacity(0.5);
+
+  static final Color tertiaryColor = Colors.white.withOpacity(0.2);
 
   static const Color imdbBadgeBackgroundColor = Color(0xFFF5C518);
 }

@@ -1,4 +1,5 @@
 import 'package:bt_movie_app/common/app_colors.dart';
+import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -46,11 +47,7 @@ class ListOptions extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     AppConfigs.listOptions.keys.elementAt(index),
-                    style: const TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                    ),
+                    style: AppTextStyles.whiteS9W400,
                   ),
                 ],
               ),

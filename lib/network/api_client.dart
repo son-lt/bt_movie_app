@@ -1,34 +1,60 @@
-import 'package:bt_movie_app/configs/app_configs.dart';
+import 'dart:convert';
+
 import 'package:bt_movie_app/models/entities/cast_list_entity.dart';
 import 'package:bt_movie_app/models/entities/movie_entity.dart';
 import 'package:bt_movie_app/models/entities/movie_list_entity.dart';
-import 'package:bt_movie_app/models/responses/data_response.dart';
-import 'package:dio/dio.dart';
-import 'package:retrofit/retrofit.dart';
+import 'package:bt_movie_app/models/enums/category_type.dart';
+import 'package:bt_movie_app/models/enums/info_type.dart';
+import 'package:bt_movie_app/utils/api_utils.dart';
+import 'package:http/http.dart' as http;
 
-part 'api_client.g.dart';
+class ApiClient {
+  static Future<MovieListEntity?> getMovieList(
+      {required CategoryType type, int page = 1}) async {
+    final response = await http.get(
+      Uri.parse(
+        ApiUtils.getApiMovieList(
+          type: type,
+          page: page,
+        ),
+      ),
+    );
+    if (response.statusCode == 200) {
+      return MovieListEntity.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception();
+    }
+  }
 
-@RestApi(baseUrl: AppConfigs.baseUrl)
-abstract class ApiClient {
-  factory ApiClient(Dio dio) = _ApiClient;
+  static Future<MovieEntity?> getMovieDetail(int id) async {
+    final response = await http.get(
+      Uri.parse(
+        ApiUtils.getApiMovieInfo(
+          type: InfoType.detail,
+          id: id,
+        ),
+      ),
+    );
+    if (response.statusCode == 200) {
+      return MovieEntity.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception();
+    }
+  }
 
-  @GET('/popular?${AppConfigs.apiKey}')
-  Future<DataResponse<MovieListEntity>> getMostPopularList(
-    @Query('page') int page,
-  );
-
-  @GET('/upcoming?${AppConfigs.apiKey}')
-  Future<DataResponse<MovieListEntity>> getUpcomingReleasesList(
-    @Query('page') int page,
-  );
-
-  @GET('/{id}?${AppConfigs.apiKey}')
-  Future<DataResponse<MovieEntity>> getDetail(
-    @Path('id') int id,
-  );
-
-  @GET('/{id}/credits?${AppConfigs.apiKey}')
-  Future<DataResponse<CastListEntity>> getCastList(
-    @Path('id') int id,
-  );
+  static Future<CastListEntity?> getCastList(int id) async {
+    final response = await http.get(
+      Uri.parse(
+        ApiUtils.getApiMovieInfo(
+          type: InfoType.cast,
+          id: id,
+        ),
+      ),
+    );
+    if (response.statusCode == 200) {
+      return CastListEntity.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception();
+    }
+  }
 }
