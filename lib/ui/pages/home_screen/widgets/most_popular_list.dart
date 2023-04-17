@@ -82,6 +82,7 @@ class _MostPopularListState extends State<MostPopularList> {
             score: data?.results?[index].voteAverage?.toStringAsFixed(1) ?? '',
             src: data?.results?[index].backdropPath ?? '',
             isCenter: isCenter,
+            id: data?.results?[index].id ?? 0,
           );
         },
         length: listLength,

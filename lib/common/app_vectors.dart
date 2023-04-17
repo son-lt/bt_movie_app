@@ -26,4 +26,6 @@ class AppVectors {
 
   static const String shuffleVector = 'assets/vectors/shuffle.svg';
 
+  static const String backVector = 'assets/vectors/back.svg';
+
 }

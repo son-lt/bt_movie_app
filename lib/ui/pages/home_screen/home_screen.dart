@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: buildBody(),
+        body: _buildBody(),
         bottomNavigationBar: CustomBottomNavigationBar(
           currentIndex: currentPage,
           onPageChange: (value) {
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildBody() {
+  Widget _buildBody() {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
