@@ -65,18 +65,18 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-                Visibility(
-                  visible: isChoose,
-                  replacement: const SizedBox(height: 4),
-                  child: Container(
-                    width: 4,
-                    height: 4,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
+              Visibility(
+                visible: isChoose,
+                replacement: const SizedBox(height: 4),
+                child: Container(
+                  width: 4,
+                  height: 4,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
                   ),
-                )
+                ),
+              )
             ],
           ),
         );

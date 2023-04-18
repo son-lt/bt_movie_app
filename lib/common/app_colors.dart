@@ -16,6 +16,11 @@ class AppColors {
     const Color(0xFFA1F3FE).withOpacity(0.3),
   ];
 
+  static final List<Color> gradientTextButtonColor = [
+    const Color(0xFFA6A1E0),
+    const Color(0xFFA1F3FE),
+  ];
+
   static List<Color> gradientBackgroundIndicatorDot({
     required double opacity1,
     double? opacity2,

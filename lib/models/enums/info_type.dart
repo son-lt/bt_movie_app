@@ -1,4 +1,1 @@
-enum InfoType {
-  detail,
-  cast
-}
+enum InfoType { detail, cast }

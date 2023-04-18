@@ -1,11 +1,9 @@
-import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
-import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
+import 'package:bt_movie_app/ui/commons/imdb_badge.dart';
 import 'package:bt_movie_app/ui/commons/inactive_overlay.dart';
 import 'package:bt_movie_app/ui/pages/detail_screen/detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class MostPopularItem extends StatelessWidget {
   final String title;
@@ -71,7 +69,12 @@ class MostPopularItem extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    imdbBadge(score),
+                    IMDBBadge(
+                      rate: score,
+                      style: AppTextStyles.defaultS6Bold,
+                      width: 12,
+                      height: 4,
+                    ),
                   ],
                 ),
               ),
@@ -79,27 +82,6 @@ class MostPopularItem extends StatelessWidget {
             if (!isCenter) const InactiveOverlay(),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget imdbBadge(String rate) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: AppColors.imdbBadgeBackgroundColor,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SvgPicture.asset(AppVectors.imdbBadgeVector),
-          const SizedBox(width: 4),
-          Text(
-            rate,
-            style: AppTextStyles.defaultS6Bold,
-          )
-        ],
       ),
     );
   }

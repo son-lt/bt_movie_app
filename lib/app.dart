@@ -1,3 +1,4 @@
+import 'package:bt_movie_app/common/app_disable_glow_behavior.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,6 +27,12 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: DisableGlowBehavior(),
+          child: child!,
+        );
+      },
       home: const HomeScreen(),
     );
   }

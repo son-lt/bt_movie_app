@@ -35,7 +35,7 @@ class _MostPopularListState extends State<MostPopularList> {
       loadStatus = LoadStatus.loading;
     });
     try {
-      final result = await ApiClient.getMovieList(type: CategoryType.popular) ;
+      final result = await ApiClient.getMovieList(type: CategoryType.popular);
       if (result != null) {
         setState(() {
           loadStatus = LoadStatus.success;

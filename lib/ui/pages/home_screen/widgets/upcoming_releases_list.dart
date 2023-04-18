@@ -5,6 +5,7 @@ import 'package:bt_movie_app/models/enums/load_status.dart';
 import 'package:bt_movie_app/network/api_client.dart';
 import 'package:bt_movie_app/ui/commons/app_page_view.dart';
 import 'package:bt_movie_app/ui/commons/inactive_overlay.dart';
+import 'package:bt_movie_app/ui/pages/detail_screen/detail_screen.dart';
 import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
 import 'package:bt_movie_app/ui/widgets/shimmer/app_shimmer.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +81,7 @@ class _UpcomingReleasesListState extends State<UpcomingReleasesList> {
           return upcomingReleaseItem(
             src: data?.results?[index].posterPath ?? '',
             isCenter: isCenter,
+            id: data?.results?[index].id ?? 0,
           );
         },
         length: listLength,
@@ -88,20 +90,35 @@ class _UpcomingReleasesListState extends State<UpcomingReleasesList> {
     }
   }
 
-  Widget upcomingReleaseItem({required String src, required bool isCenter}) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        image: DecorationImage(
-          image: NetworkImage(AppConfigs.baseImageURL + src),
-          fit: BoxFit.cover,
+  Widget upcomingReleaseItem({
+    required String src,
+    required bool isCenter,
+    required int id,
+  }) {
+    return InkWell(
+      onTap: isCenter
+          ? () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DetailScreen(id: id),
+                ),
+              );
+            }
+          : null,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          image: DecorationImage(
+            image: NetworkImage(AppConfigs.baseImageURL + src),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      child: Stack(
-        children: [
-          if (!isCenter) const InactiveOverlay(),
-        ],
+        child: Stack(
+          children: [
+            if (!isCenter) const InactiveOverlay(),
+          ],
+        ),
       ),
     );
   }

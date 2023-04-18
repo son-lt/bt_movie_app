@@ -39,9 +39,7 @@ class Dates {
     this.minimum,
   });
 
-  factory Dates.fromJson(Map<String, dynamic> json) =>
-      _$DatesFromJson(json);
+  factory Dates.fromJson(Map<String, dynamic> json) => _$DatesFromJson(json);
 
   Map<String, dynamic> toJson() => _$DatesToJson(this);
-
 }

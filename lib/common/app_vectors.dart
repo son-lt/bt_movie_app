@@ -1,5 +1,4 @@
 class AppVectors {
-
   static const String notiVector = 'assets/vectors/noti.svg';
 
   static const String searchVector = 'assets/vectors/search.svg';
@@ -28,4 +27,7 @@ class AppVectors {
 
   static const String backVector = 'assets/vectors/back.svg';
 
+  static const String shareVector = 'assets/vectors/share.svg';
+
+  static const String lineVector = 'assets/vectors/line.svg';
 }
