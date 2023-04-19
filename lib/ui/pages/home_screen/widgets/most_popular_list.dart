@@ -3,10 +3,10 @@ import 'package:bt_movie_app/models/entities/movie_list_entity.dart';
 import 'package:bt_movie_app/models/enums/category_type.dart';
 import 'package:bt_movie_app/models/enums/load_status.dart';
 import 'package:bt_movie_app/network/api_client.dart';
-import 'package:bt_movie_app/ui/commons/app_page_view.dart';
+import 'package:bt_movie_app/ui/widgets/app_page_view.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_item.dart';
 import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
-import 'package:bt_movie_app/ui/widgets/shimmer/app_shimmer.dart';
+import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
 
 class MostPopularList extends StatefulWidget {

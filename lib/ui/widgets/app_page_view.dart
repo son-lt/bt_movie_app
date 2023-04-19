@@ -1,4 +1,4 @@
-import 'package:bt_movie_app/ui/commons/dots_indicator.dart';
+import 'package:bt_movie_app/ui/widgets/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 class AppPageView extends StatelessWidget {

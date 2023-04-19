@@ -1,7 +1,9 @@
 import 'package:bt_movie_app/common/app_textstyles.dart';
+import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:bt_movie_app/models/entities/cast_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CastListView extends StatefulWidget {
   final List<CastEntity> listCast;
@@ -76,14 +78,34 @@ class _CastListViewState extends State<CastListView> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 52,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(
-                image: NetworkImage(AppConfigs.baseImageURL + profilePath),
-                fit: BoxFit.cover,
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              AppConfigs.baseImageURL + profilePath,
+              height: 52,
+              width: 52,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return SvgPicture.asset(AppVectors.accountVector);
+              },
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return SizedBox(
+                  height: 52,
+                  width: 52,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                      color: Colors.white,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           const SizedBox(height: 8),

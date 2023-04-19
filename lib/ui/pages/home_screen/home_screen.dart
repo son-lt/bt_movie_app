@@ -1,6 +1,6 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
-import 'package:bt_movie_app/ui/commons/custom_bottom_navigation_bar.dart';
+import 'package:bt_movie_app/ui/widgets/custom_bottom_navigation_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list.dart';

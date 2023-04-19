@@ -7,7 +7,7 @@ import 'package:bt_movie_app/models/enums/load_status.dart';
 import 'package:bt_movie_app/network/api_client.dart';
 import 'package:bt_movie_app/ui/pages/detail_screen/widgets/bottom_sheet_widget.dart';
 import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
-import 'package:bt_movie_app/ui/widgets/shimmer/app_shimmer.dart';
+import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -84,6 +84,13 @@ class _DetailScreenState extends State<DetailScreen> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              } else {
+                return const AppShimmer();
+              }
+            },
           ),
           BottomSheetWidget(
             title: movieData?.title ?? '',

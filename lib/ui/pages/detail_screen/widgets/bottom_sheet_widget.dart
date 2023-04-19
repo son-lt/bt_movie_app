@@ -2,9 +2,9 @@ import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:bt_movie_app/models/entities/cast_entity.dart';
-import 'package:bt_movie_app/ui/commons/imdb_badge.dart';
 import 'package:bt_movie_app/ui/pages/detail_screen/widgets/cast_list_view.dart';
 import 'package:bt_movie_app/ui/pages/detail_screen/widgets/overview_text.dart';
+import 'package:bt_movie_app/ui/widgets/imdb_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -61,7 +61,7 @@ class BottomSheetWidget extends StatelessWidget {
             controller: scrollController,
             padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 12),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height * 0.95,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
