@@ -58,7 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 28),
           Padding(
             padding: const EdgeInsets.only(left: 52),
-            child: Text('Most Popular', style: AppTextStyles.whiteS18Bold),
+            child: Text(
+              'Most Popular',
+              style: AppTextStyles.whiteS18Bold,
+            ),
           ),
           const MostPopularList(),
           const SizedBox(height: 4),
@@ -66,7 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 36),
           Padding(
             padding: const EdgeInsets.only(left: 52, bottom: 16),
-            child: Text('Upcoming releases', style: AppTextStyles.whiteS18Bold),
+            child: Text(
+              'Upcoming releases',
+              style: AppTextStyles.whiteS18Bold,
+            ),
           ),
           const UpcomingReleasesList(),
         ],
