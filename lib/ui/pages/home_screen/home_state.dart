@@ -1,7 +1,16 @@
-import 'package:get/get.dart';
+part of 'home_cubit.dart';
 
-class HomeState {
-  final Rx<int> currentPage = 0.obs;
+class HomeState extends Equatable {
+  final int currentPage;
 
-  HomeState();
+  const HomeState({this.currentPage = 0});
+
+  @override
+  List<Object?> get props => [
+        currentPage,
+      ];
+
+  HomeState copyWith({int? currentPage}) {
+    return HomeState(currentPage: currentPage ?? this.currentPage);
+  }
 }

@@ -1,7 +1,5 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
-import 'package:bt_movie_app/ui/pages/home_screen/home_logic.dart';
-import 'package:bt_movie_app/ui/pages/home_screen/home_state.dart';
 import 'package:bt_movie_app/ui/widgets/custom_bottom_navigation_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
@@ -9,30 +7,56 @@ import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/search_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list/upcoming_releases_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+import 'home_cubit.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) {
+        return HomeCubit();
+      },
+      child: const HomeChildPage(),
+    );
+  }
 }
 
-class _HomePageState extends State<HomePage> {
-  final HomeLogic logic = Get.put(HomeLogic());
-  final HomeState state = Get.find<HomeLogic>().state;
+class HomeChildPage extends StatefulWidget {
+  const HomeChildPage({super.key});
+
+  @override
+  State<HomeChildPage> createState() => _HomeChildPageState();
+}
+
+class _HomeChildPageState extends State<HomeChildPage> {
+  late final HomeCubit _cubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _cubit = BlocProvider.of(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: _buildBody(),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: state.currentPage.value,
-          onPageChange: (value) {
-            logic.setCurrentPage(page: value);
-          },
-        ),
+        bottomNavigationBar: BlocBuilder<HomeCubit, HomeState>(
+            buildWhen: (previous, current) =>
+                previous.currentPage != current.currentPage,
+            builder: (context, state) {
+              return CustomBottomNavigationBar(
+                currentIndex: state.currentPage,
+                onPageChange: (value) {
+                  _cubit.setCurrentPage(page: value);
+                },
+              );
+            }),
       ),
     );
   }

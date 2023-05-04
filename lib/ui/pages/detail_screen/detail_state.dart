@@ -1,12 +1,32 @@
-import 'package:bt_movie_app/models/entities/cast_list_entity.dart';
-import 'package:bt_movie_app/models/entities/movie_entity.dart';
-import 'package:bt_movie_app/models/enums/load_status.dart';
-import 'package:get/get.dart';
+part of 'detail_cubit.dart';
 
-class DetailState {
-  final Rx<LoadStatus> loadStatus = LoadStatus.initial.obs;
-  final Rx<MovieEntity> movieData = MovieEntity().obs;
-  final Rx<CastListEntity> castListData = CastListEntity().obs;
+class DetailState extends Equatable {
+  final LoadStatus loadStatus;
+  final MovieEntity? movieData;
+  final CastListEntity? castListData;
 
-  DetailState();
+  const DetailState({
+    this.loadStatus = LoadStatus.initial,
+    this.movieData,
+    this.castListData,
+  });
+
+  @override
+  List<Object?> get props => [
+        loadStatus,
+        movieData,
+        castListData,
+      ];
+
+  DetailState copyWith({
+    LoadStatus? loadStatus,
+    MovieEntity? movieData,
+    CastListEntity? castListData,
+  }) {
+    return DetailState(
+      loadStatus: loadStatus ?? this.loadStatus,
+      movieData: movieData ?? this.movieData,
+      castListData: castListData ?? this.castListData,
+    );
+  }
 }

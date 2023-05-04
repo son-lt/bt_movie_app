@@ -1,13 +1,37 @@
-import 'package:bt_movie_app/configs/app_configs.dart';
-import 'package:bt_movie_app/models/entities/movie_list_entity.dart';
-import 'package:bt_movie_app/models/enums/load_status.dart';
-import 'package:get/get.dart';
+part of 'most_popular_cubit.dart';
 
-class MostPopularState {
-  final Rx<int> listLength = AppConfigs.listLength.obs;
-  final Rx<int> currentPage = 0.obs;
-  final Rx<MovieListEntity> data = MovieListEntity().obs;
-  final Rx<LoadStatus> loadStatus = LoadStatus.initial.obs;
+class MostPopularState extends Equatable {
+  final int listLength;
+  final int currentPage;
+  final MovieListEntity? data;
+  final LoadStatus loadStatus;
 
-  MostPopularState();
+  const MostPopularState({
+    this.listLength = AppConfigs.listLength,
+    this.currentPage = 0,
+    this.data,
+    this.loadStatus = LoadStatus.initial,
+  });
+
+  @override
+  List<Object?> get props => [
+        listLength,
+        currentPage,
+        data,
+        loadStatus,
+      ];
+
+  MostPopularState copyWith({
+    int? listLength,
+    int? currentPage,
+    MovieListEntity? data,
+    LoadStatus? loadStatus,
+  }) {
+    return MostPopularState(
+      listLength: listLength ?? this.listLength,
+      currentPage: currentPage ?? this.currentPage,
+      data: data ?? this.data,
+      loadStatus: loadStatus ?? this.loadStatus,
+    );
+  }
 }
