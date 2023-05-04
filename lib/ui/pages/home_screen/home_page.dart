@@ -1,34 +1,32 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/home_view_model.dart';
 import 'package:bt_movie_app/ui/widgets/custom_bottom_navigation_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
-import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most_popular_list_view.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/search_bar.dart';
-import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list/upcoming_releases_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int currentPage = 0;
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: _buildBody(),
         bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: currentPage,
+          currentIndex: context.watch<HomeViewModel>().currentPage,
           onPageChange: (value) {
-            setState(() {
-              currentPage = value;
-            });
+            context.read<HomeViewModel>().setCurrentPage(page: value);
           },
         ),
       ),
@@ -58,17 +56,23 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 28),
           Padding(
             padding: const EdgeInsets.only(left: 52),
-            child: Text('Most Popular', style: AppTextStyles.whiteS18Bold),
+            child: Text(
+              'Most Popular',
+              style: AppTextStyles.whiteS18Bold,
+            ),
           ),
-          const MostPopularList(),
+          const MostPopularListView(),
           const SizedBox(height: 4),
           const ListOptions(),
           const SizedBox(height: 36),
           Padding(
             padding: const EdgeInsets.only(left: 52, bottom: 16),
-            child: Text('Upcoming releases', style: AppTextStyles.whiteS18Bold),
+            child: Text(
+              'Upcoming releases',
+              style: AppTextStyles.whiteS18Bold,
+            ),
           ),
-          const UpcomingReleasesList(),
+          const UpcomingReleasesListView(),
         ],
       ),
     );

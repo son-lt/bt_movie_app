@@ -1,6 +1,6 @@
 import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
-import 'package:bt_movie_app/ui/pages/detail_screen/detail_screen.dart';
+import 'package:bt_movie_app/ui/pages/detail_screen/detail_page.dart';
 import 'package:bt_movie_app/ui/widgets/imdb_badge.dart';
 import 'package:bt_movie_app/ui/widgets/inactive_overlay.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,9 @@ class MostPopularItem extends StatelessWidget {
           ? () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => DetailScreen(id: id),
+                  builder: (context) => DetailPage(
+                    args: DetailPageArgs(id: id),
+                  ),
                 ),
               );
             }

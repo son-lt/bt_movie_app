@@ -86,7 +86,12 @@ class _CastListViewState extends State<CastListView> {
               width: 52,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return SvgPicture.asset(AppVectors.accountVector);
+                return SvgPicture.asset(
+                  AppVectors.accountVector,
+                  height: 52,
+                  width: 52,
+                  fit: BoxFit.cover,
+                );
               },
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) {
