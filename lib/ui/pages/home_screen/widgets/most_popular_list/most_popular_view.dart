@@ -7,14 +7,14 @@ import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MostPopularListView extends StatefulWidget {
-  const MostPopularListView({super.key});
+class MostPopularView extends StatefulWidget {
+  const MostPopularView({super.key});
 
   @override
-  State<MostPopularListView> createState() => _MostPopularListViewState();
+  State<MostPopularView> createState() => _MostPopularViewState();
 }
 
-class _MostPopularListViewState extends State<MostPopularListView> {
+class _MostPopularViewState extends State<MostPopularView> {
   late PageController _pageController;
   late final MostPopularViewModel provider;
 

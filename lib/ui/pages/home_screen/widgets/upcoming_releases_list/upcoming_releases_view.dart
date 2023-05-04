@@ -9,15 +9,15 @@ import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class UpcomingReleasesListView extends StatefulWidget {
-  const UpcomingReleasesListView({super.key});
+class UpcomingReleasesView extends StatefulWidget {
+  const UpcomingReleasesView({super.key});
 
   @override
-  State<UpcomingReleasesListView> createState() =>
-      _UpcomingReleasesListViewState();
+  State<UpcomingReleasesView> createState() =>
+      _UpcomingReleasesViewState();
 }
 
-class _UpcomingReleasesListViewState extends State<UpcomingReleasesListView> {
+class _UpcomingReleasesViewState extends State<UpcomingReleasesView> {
   late PageController _pageController;
   late final UpcomingReleasesViewModel provider;
 

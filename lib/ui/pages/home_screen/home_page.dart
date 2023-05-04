@@ -4,9 +4,9 @@ import 'package:bt_movie_app/ui/pages/home_screen/home_view_model.dart';
 import 'package:bt_movie_app/ui/widgets/custom_bottom_navigation_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/hello_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/list_options.dart';
-import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most_popular_list_view.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most_popular_view.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/search_bar.dart';
-import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list/upcoming_releases_list_view.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list/upcoming_releases_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
               style: AppTextStyles.whiteS18Bold,
             ),
           ),
-          const MostPopularListView(),
+          const MostPopularView(),
           const SizedBox(height: 4),
           const ListOptions(),
           const SizedBox(height: 36),
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
               style: AppTextStyles.whiteS18Bold,
             ),
           ),
-          const UpcomingReleasesListView(),
+          const UpcomingReleasesView(),
         ],
       ),
     );
