@@ -2,13 +2,14 @@ import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:bt_movie_app/models/enums/load_status.dart';
-import 'package:bt_movie_app/ui/pages/detail_screen/detail_view_model.dart';
+import 'package:bt_movie_app/ui/pages/detail_screen/detail_logic.dart';
+import 'package:bt_movie_app/ui/pages/detail_screen/detail_state.dart';
 import 'package:bt_movie_app/ui/pages/detail_screen/widgets/bottom_sheet_widget.dart';
 import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
 import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class DetailPageArgs {
   final int id;
@@ -29,48 +30,48 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  late final DetailViewModel provider;
+  final DetailLogic logic = Get.put(DetailLogic());
+  final DetailState state = Get.find<DetailLogic>().state;
 
   @override
   void initState() {
     super.initState();
-    provider = context.read<DetailViewModel>();
-    provider.loadInitialData(widget.args.id);
+    logic.loadInitialData(widget.args.id);
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Consumer<DetailViewModel>(
-          builder: (context, value, child) {
-            return _buildBody(value);
+        body: Obx(
+          () {
+            return _buildBody();
           },
         ),
       ),
     );
   }
 
-  Widget _buildBody(DetailViewModel state) {
-    if (state.loadStatus == LoadStatus.loading) {
+  Widget _buildBody() {
+    if (state.loadStatus.value == LoadStatus.loading) {
       return AppShimmer(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
       );
-    } else if (state.loadStatus == LoadStatus.failure) {
+    } else if (state.loadStatus.value == LoadStatus.failure) {
       return AppErrorView(
         height: MediaQuery.of(context).size.height,
         margin: const EdgeInsets.symmetric(horizontal: 144),
         borderRadius: 30,
         onTap: () async {
-          await provider.loadInitialData(widget.args.id);
+          await logic.loadInitialData(widget.args.id);
         },
       );
     } else {
       return Stack(
         children: [
           Image.network(
-            AppConfigs.baseImageURL + (state.movieData?.posterPath ?? ''),
+            AppConfigs.baseImageURL + (state.movieData.value.posterPath ?? ''),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             fit: BoxFit.cover,
@@ -83,12 +84,12 @@ class _DetailPageState extends State<DetailPage> {
             },
           ),
           BottomSheetWidget(
-            title: state.movieData?.title ?? '',
-            genre: state.movieData?.genres?.first.name ?? '',
-            adult: state.movieData?.adult ?? false,
-            rate: state.movieData?.voteAverage?.toStringAsFixed(1) ?? '',
-            overview: state.movieData?.overview ?? '',
-            listCast: state.castListData?.cast ?? [],
+            title: state.movieData.value.title ?? '',
+            genre: state.movieData.value.genres?.first.name ?? '',
+            adult: state.movieData.value.adult ?? false,
+            rate: state.movieData.value.voteAverage?.toStringAsFixed(1) ?? '',
+            overview: state.movieData.value.overview ?? '',
+            listCast: state.castListData.value.cast ?? [],
           ),
           Positioned(
             left: 52,
