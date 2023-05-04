@@ -120,4 +120,10 @@ class _UpcomingReleasesChildViewState extends State<UpcomingReleasesChildView> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _cubit.close();
+  }
 }

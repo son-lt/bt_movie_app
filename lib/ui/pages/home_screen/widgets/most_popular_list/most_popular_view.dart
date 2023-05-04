@@ -88,4 +88,10 @@ class _MostPopularChildViewState extends State<MostPopularChildView> {
       },
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _cubit.close();
+  }
 }

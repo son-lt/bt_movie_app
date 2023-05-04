@@ -136,4 +136,10 @@ class _DetailChildPageState extends State<DetailChildPage> {
       },
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _cubit.close();
+  }
 }

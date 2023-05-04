@@ -105,4 +105,10 @@ class _HomeChildPageState extends State<HomeChildPage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _cubit.close();
+  }
 }
