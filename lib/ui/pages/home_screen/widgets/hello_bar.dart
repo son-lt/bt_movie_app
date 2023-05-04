@@ -18,7 +18,7 @@ class HelloBar extends StatelessWidget {
             children: const [
               TextSpan(text: 'Hello, '),
               TextSpan(
-                text: 'Tuấn Đờ Quy!',
+                text: 'User',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
