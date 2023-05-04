@@ -2,6 +2,7 @@ import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HelloBar extends StatelessWidget {
@@ -28,8 +29,8 @@ class HelloBar extends StatelessWidget {
         ),
         SvgPicture.asset(
           AppVectors.notiVector,
-          width: 16,
-          height: 20,
+          width: 16.w,
+          height: 20.h,
           colorFilter: ColorFilter.mode(
             AppColors.primaryColor,
             BlendMode.srcIn,

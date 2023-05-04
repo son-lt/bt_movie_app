@@ -9,6 +9,7 @@ import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
 import 'package:bt_movie_app/ui/widgets/inactive_overlay.dart';
 import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpcomingReleasesList extends StatefulWidget {
   const UpcomingReleasesList({super.key});
@@ -54,15 +55,15 @@ class _UpcomingReleasesListState extends State<UpcomingReleasesList> {
   Widget build(BuildContext context) {
     if (loadStatus == LoadStatus.loading) {
       return AppShimmer(
-        height: MediaQuery.of(context).size.height * 1 / 4,
-        margin: const EdgeInsets.symmetric(horizontal: 144),
-        cornerRadius: 30,
+        height: 256.h,
+        margin: const EdgeInsets.symmetric(horizontal: 144).r,
+        cornerRadius: 30.r,
       );
     } else if (loadStatus == LoadStatus.failure) {
       return AppErrorView(
-        height: MediaQuery.of(context).size.height * 1 / 4,
+        height: 256.h,
         margin: const EdgeInsets.symmetric(horizontal: 144),
-        borderRadius: 30,
+        borderRadius: 30.r,
         onTap: () async {
           await loadInitialData();
         },
@@ -85,7 +86,7 @@ class _UpcomingReleasesListState extends State<UpcomingReleasesList> {
           );
         },
         length: listLength,
-        heightScaleFactor: 1 / 4,
+       height: 256.h,
       );
     }
   }
@@ -106,9 +107,9 @@ class _UpcomingReleasesListState extends State<UpcomingReleasesList> {
             }
           : null,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 12).r,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30).r,
           image: DecorationImage(
             image: NetworkImage(AppConfigs.baseImageURL + src),
             fit: BoxFit.cover,

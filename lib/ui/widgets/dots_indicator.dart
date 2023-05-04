@@ -1,16 +1,20 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DotsIndicator extends StatelessWidget {
   final int currentPage;
 
-  const DotsIndicator({Key? key, required this.currentPage}) : super(key: key);
+  const DotsIndicator({
+    Key? key,
+    required this.currentPage,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16).r,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -24,9 +28,9 @@ class DotsIndicator extends StatelessWidget {
       AppConfigs.listLength,
       (index) {
         return Container(
-          width: 8,
-          height: 8,
-          margin: const EdgeInsets.symmetric(horizontal: 4),
+          width: 8.h,
+          height: 8.h,
+          margin: const EdgeInsets.symmetric(horizontal: 4).r,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(

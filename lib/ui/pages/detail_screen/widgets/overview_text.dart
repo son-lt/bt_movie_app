@@ -1,6 +1,7 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OverviewText extends StatefulWidget {
   final String overview;
@@ -25,9 +26,8 @@ class _OverviewTextState extends State<OverviewText> {
           WidgetSpan(
             child: Text(
               widget.overview,
-              style: AppTextStyles.primaryS12W500.copyWith(
-                overflow: isShow ? TextOverflow.visible : TextOverflow.ellipsis,
-              ),
+              style: AppTextStyles.primaryS12W500,
+              overflow: isShow ? TextOverflow.visible : TextOverflow.ellipsis,
               maxLines: isShow ? null : 3,
             ),
           ),
@@ -41,7 +41,7 @@ class _OverviewTextState extends State<OverviewText> {
               child: Text(
                 isShow ? 'Less' : 'More',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                   foreground: Paint()
                     ..shader = LinearGradient(

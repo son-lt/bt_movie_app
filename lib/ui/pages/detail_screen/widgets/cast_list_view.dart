@@ -3,6 +3,7 @@ import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:bt_movie_app/models/entities/cast_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CastListView extends StatefulWidget {
@@ -46,7 +47,7 @@ class _CastListViewState extends State<CastListView> {
               ),
           ],
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h),
         Expanded(
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
@@ -59,7 +60,7 @@ class _CastListViewState extends State<CastListView> {
               );
             },
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(width: 20);
+              return SizedBox(width: 20.w);
             },
           ),
         ),
@@ -73,7 +74,7 @@ class _CastListViewState extends State<CastListView> {
     required String character,
   }) {
     return SizedBox(
-      width: 52,
+      width: 52.w,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,14 +83,14 @@ class _CastListViewState extends State<CastListView> {
             borderRadius: BorderRadius.circular(15),
             child: Image.network(
               AppConfigs.baseImageURL + profilePath,
-              height: 52,
-              width: 52,
+              height: 52.h,
+              width: 52.h,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return SvgPicture.asset(
                   AppVectors.accountVector,
-                  height: 52,
-                  width: 52,
+                  height: 52.h,
+                  width: 52.h,
                   fit: BoxFit.cover,
                 );
               },
@@ -98,8 +99,8 @@ class _CastListViewState extends State<CastListView> {
                   return child;
                 }
                 return SizedBox(
-                  height: 52,
-                  width: 52,
+                  height: 52.h,
+                  width: 52.h,
                   child: Center(
                     child: CircularProgressIndicator(
                       value: loadingProgress.expectedTotalBytes != null
@@ -113,13 +114,13 @@ class _CastListViewState extends State<CastListView> {
               },
             ),
           ),
-          const SizedBox(height: 8),
+           SizedBox(height: 8.h),
           Text(
             name,
             style: AppTextStyles.whiteS8W500,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
           Text(
             character,
             style: AppTextStyles.secondaryS8W500,
