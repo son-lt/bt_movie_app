@@ -36,7 +36,7 @@ class AppErrorView extends StatelessWidget {
               'Error!',
               style: AppTextStyles.whiteS18Bold,
             ),
-             SizedBox(height: 16.h),
+            SizedBox(height: 16.h),
             InkWell(
               onTap: () {
                 onTap;

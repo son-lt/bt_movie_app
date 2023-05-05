@@ -35,7 +35,7 @@ class IMDBBadge extends StatelessWidget {
             width: width,
             height: height,
           ),
-           SizedBox(width: 4.w),
+          SizedBox(width: 4.w),
           Text(
             rate,
             style: style,

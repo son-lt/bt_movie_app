@@ -54,14 +54,9 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _buildBody(DetailViewModel state) {
     if (state.loadStatus == LoadStatus.loading) {
-      return AppShimmer(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-  Widget _buildBody() {
-    if (loadStatus == LoadStatus.loading) {
       return const AppShimmer(
         width: double.infinity,
-        height:  double.infinity,
+        height: double.infinity,
       );
     } else if (state.loadStatus == LoadStatus.failure) {
       return AppErrorView(
@@ -77,9 +72,6 @@ class _DetailPageState extends State<DetailPage> {
         children: [
           Image.network(
             AppConfigs.baseImageURL + (state.movieData?.posterPath ?? ''),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            AppConfigs.baseImageURL + (movieData?.posterPath ?? ''),
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.cover,
@@ -98,6 +90,14 @@ class _DetailPageState extends State<DetailPage> {
             rate: state.movieData?.voteAverage?.toStringAsFixed(1) ?? '',
             overview: state.movieData?.overview ?? '',
             listCast: state.castListData?.cast ?? [],
+            listLength: state.listLength,
+            showMoreCast: () {
+              provider.showMoreCast();
+            },
+            isShow: state.isShow,
+            showMoreText: () {
+              provider.setIsShow();
+            },
           ),
           Positioned(
             left: 52.w,

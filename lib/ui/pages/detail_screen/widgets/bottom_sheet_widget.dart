@@ -16,6 +16,10 @@ class BottomSheetWidget extends StatelessWidget {
   final String rate;
   final String overview;
   final List<CastEntity> listCast;
+  final int listLength;
+  final Function() showMoreCast;
+  final bool isShow;
+  final Function() showMoreText;
 
   const BottomSheetWidget({
     Key? key,
@@ -25,6 +29,10 @@ class BottomSheetWidget extends StatelessWidget {
     required this.rate,
     required this.overview,
     required this.listCast,
+    required this.listLength,
+    required this.showMoreCast,
+    required this.isShow,
+    required this.showMoreText,
   }) : super(key: key);
 
   List<String> splitTitle(String title) {
@@ -89,11 +97,19 @@ class BottomSheetWidget extends StatelessWidget {
                       buildOptions(),
                     ],
                   ),
-                   SizedBox(height: 16.h),
-                  OverviewText(overview: overview),
-                   SizedBox(height: 20.h),
+                  SizedBox(height: 16.h),
+                  OverviewText(
+                    overview: overview,
+                    isShow: isShow,
+                    showMoreText: showMoreText,
+                  ),
+                  SizedBox(height: 20.h),
                   Expanded(
-                    child: CastListView(listCast: listCast),
+                    child: CastListView(
+                      listCast: listCast,
+                      listLength: listLength,
+                      showMoreCast: showMoreCast,
+                    ),
                   ),
                 ],
               ),

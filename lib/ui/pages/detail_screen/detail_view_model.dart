@@ -8,6 +8,8 @@ class DetailViewModel extends ChangeNotifier {
   LoadStatus loadStatus = LoadStatus.initial;
   MovieEntity? movieData;
   CastListEntity? castListData;
+  int listLength = 5;
+  bool isShow = false;
 
   DetailViewModel();
 
@@ -26,5 +28,15 @@ class DetailViewModel extends ChangeNotifier {
       loadStatus = LoadStatus.failure;
       notifyListeners();
     }
+  }
+
+  void showMoreCast() {
+    listLength = castListData?.cast?.length ?? 0;
+    notifyListeners();
+  }
+
+  void setIsShow() {
+    isShow = !isShow;
+    notifyListeners();
   }
 }

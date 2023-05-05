@@ -6,20 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CastListView extends StatefulWidget {
+class CastListView extends StatelessWidget {
   final List<CastEntity> listCast;
+  final int listLength;
+  final Function() showMoreCast;
 
   const CastListView({
     Key? key,
     required this.listCast,
+    required this.listLength,
+    required this.showMoreCast,
   }) : super(key: key);
-
-  @override
-  State<CastListView> createState() => _CastListViewState();
-}
-
-class _CastListViewState extends State<CastListView> {
-  int listLength = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +30,9 @@ class _CastListViewState extends State<CastListView> {
               'Cast',
               style: AppTextStyles.whiteS18Bold,
             ),
-            if (listLength != widget.listCast.length)
+            if (listLength != listCast.length)
               InkWell(
-                onTap: () {
-                  setState(() {
-                    listLength = widget.listCast.length;
-                  });
-                },
+                onTap: showMoreCast,
                 child: Text(
                   'See All',
                   style: AppTextStyles.whiteS12W500,
@@ -54,9 +47,9 @@ class _CastListViewState extends State<CastListView> {
             itemCount: listLength,
             itemBuilder: (BuildContext context, int index) {
               return buildCastItem(
-                profilePath: widget.listCast[index].profilePath ?? '',
-                name: widget.listCast[index].name ?? '',
-                character: widget.listCast[index].character ?? '',
+                profilePath: listCast[index].profilePath ?? '',
+                name: listCast[index].name ?? '',
+                character: listCast[index].character ?? '',
               );
             },
             separatorBuilder: (BuildContext context, int index) {
@@ -114,7 +107,7 @@ class _CastListViewState extends State<CastListView> {
               },
             ),
           ),
-           SizedBox(height: 8.h),
+          SizedBox(height: 8.h),
           Text(
             name,
             style: AppTextStyles.whiteS8W500,

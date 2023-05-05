@@ -51,11 +51,6 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 20.h),
           Padding(
-            padding: const EdgeInsets.only(left: 52),
-            child: Text(
-              'Most Popular',
-              style: AppTextStyles.whiteS18Bold,
-            ),
             padding: const EdgeInsets.symmetric(horizontal: 52).r,
             child: const SearchBar(),
           ),
@@ -68,17 +63,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const MostPopularView(),
-          const SizedBox(height: 4),
-          const MostPopularList(),
           SizedBox(height: 4.h),
           const ListOptions(),
           SizedBox(height: 36.h),
           Padding(
-            padding: const EdgeInsets.only(left: 52, bottom: 16),
-            child: Text(
-              'Upcoming releases',
-              style: AppTextStyles.whiteS18Bold,
-            ),
             padding: const EdgeInsets.only(left: 52, bottom: 16).r,
             child: Text(
               'Upcoming releases',

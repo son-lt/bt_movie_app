@@ -5,6 +5,7 @@ import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most
 import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
 import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class MostPopularView extends StatefulWidget {
@@ -32,15 +33,15 @@ class _MostPopularViewState extends State<MostPopularView> {
       builder: (context, value, child) {
         if (value.loadStatus == LoadStatus.loading) {
           return AppShimmer(
-            height: MediaQuery.of(context).size.height * 1 / 6,
-            cornerRadius: 30,
-            margin: const EdgeInsets.symmetric(horizontal: 52, vertical: 16),
+            height: 140.h,
+            cornerRadius: 30.r,
+            margin: const EdgeInsets.symmetric(horizontal: 52, vertical: 16).r,
           );
         } else if (value.loadStatus == LoadStatus.failure) {
           return AppErrorView(
-            height: MediaQuery.of(context).size.height * 1 / 6,
-            margin: const EdgeInsets.symmetric(horizontal: 52, vertical: 16),
-            borderRadius: 30,
+            height: 140.h,
+            margin: const EdgeInsets.symmetric(horizontal: 52, vertical: 16).r,
+            borderRadius: 30.r,
             onTap: () async {
               await provider.loadInitialData();
             },
@@ -65,7 +66,7 @@ class _MostPopularViewState extends State<MostPopularView> {
               );
             },
             length: value.listLength,
-            heightScaleFactor: 1 / 6,
+            height: 180.h,
           );
         }
       },

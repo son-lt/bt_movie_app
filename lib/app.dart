@@ -13,7 +13,6 @@ import 'package:provider/provider.dart';
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(
@@ -49,24 +48,7 @@ class MyApp extends StatelessWidget {
           },
         ),
       ],
-      child: MaterialApp(
-        title: 'Movie App',
-        theme: ThemeData(
-          textTheme: GoogleFonts.beVietnamProTextTheme(
-            Theme.of(context).textTheme,
-          ),
-        ),
-        debugShowCheckedModeBanner: false,
-        builder: (context, child) {
-          return ScrollConfiguration(
-            behavior: DisableGlowBehavior(),
-            child: child!,
-          );
-        },
-        home: const HomePage(),
-      ),
-    );
-    return ScreenUtilInit(
+      child: ScreenUtilInit(
         designSize: const Size(428, 926),
         minTextAdapt: true,
         splitScreenMode: true,
@@ -85,8 +67,10 @@ class MyApp extends StatelessWidget {
                 child: child!,
               );
             },
-            home: const HomeScreen(),
+            home: const HomePage(),
           );
-        });
+        },
+      ),
+    );
   }
 }

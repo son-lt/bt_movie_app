@@ -65,7 +65,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-               SizedBox(height: 8.h),
+              SizedBox(height: 8.h),
               Visibility(
                 visible: isChoose,
                 replacement: SizedBox(height: 4.h),

@@ -3,20 +3,17 @@ import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OverviewText extends StatefulWidget {
+class OverviewText extends StatelessWidget {
   final String overview;
+  final bool isShow;
+  final Function() showMoreText;
 
   const OverviewText({
     Key? key,
     required this.overview,
+    required this.isShow,
+    required this.showMoreText,
   }) : super(key: key);
-
-  @override
-  State<OverviewText> createState() => _OverviewTextState();
-}
-
-class _OverviewTextState extends State<OverviewText> {
-  bool isShow = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +22,7 @@ class _OverviewTextState extends State<OverviewText> {
         children: [
           WidgetSpan(
             child: Text(
-              widget.overview,
+              overview,
               style: AppTextStyles.primaryS12W500,
               overflow: isShow ? TextOverflow.visible : TextOverflow.ellipsis,
               maxLines: isShow ? null : 3,
@@ -33,11 +30,7 @@ class _OverviewTextState extends State<OverviewText> {
           ),
           WidgetSpan(
             child: InkWell(
-              onTap: () {
-                setState(() {
-                  isShow = !isShow;
-                });
-              },
+              onTap: showMoreText,
               child: Text(
                 isShow ? 'Less' : 'More',
                 style: TextStyle(
