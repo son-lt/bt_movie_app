@@ -1,6 +1,7 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_textstyles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppErrorView extends StatelessWidget {
   final double height;
@@ -35,16 +36,16 @@ class AppErrorView extends StatelessWidget {
               'Error!',
               style: AppTextStyles.whiteS18Bold,
             ),
-            const SizedBox(height: 16),
+             SizedBox(height: 16.h),
             InkWell(
               onTap: () {
                 onTap;
               },
               child: Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4).r,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30).r,
                   gradient: LinearGradient(
                     colors: AppColors.gradientSearchBarBackgroundColor,
                   ),

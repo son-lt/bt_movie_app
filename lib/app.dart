@@ -6,6 +6,7 @@ import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list/upcoming_releases_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -65,5 +66,27 @@ class MyApp extends StatelessWidget {
         home: const HomePage(),
       ),
     );
+    return ScreenUtilInit(
+        designSize: const Size(428, 926),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp(
+            title: 'Movie App',
+            theme: ThemeData(
+              textTheme: GoogleFonts.beVietnamProTextTheme(
+                Theme.of(context).textTheme,
+              ),
+            ),
+            debugShowCheckedModeBanner: false,
+            builder: (context, child) {
+              return ScrollConfiguration(
+                behavior: DisableGlowBehavior(),
+                child: child!,
+              );
+            },
+            home: const HomeScreen(),
+          );
+        });
   }
 }

@@ -2,12 +2,12 @@ import 'package:bt_movie_app/ui/widgets/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 class AppPageView extends StatelessWidget {
-  final double heightScaleFactor;
   final PageController pageController;
   final void Function(int) onPageChange;
   final int currentPage;
   final Widget Function(BuildContext, int) itemBuilder;
   final int length;
+  final double height;
 
   const AppPageView({
     Key? key,
@@ -16,7 +16,7 @@ class AppPageView extends StatelessWidget {
     required this.currentPage,
     required this.itemBuilder,
     required this.length,
-    required this.heightScaleFactor,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -25,7 +25,7 @@ class AppPageView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * heightScaleFactor,
+          height: height,
           child: PageView.builder(
             controller: pageController,
             pageSnapping: true,
