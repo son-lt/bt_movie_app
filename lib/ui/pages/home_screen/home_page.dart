@@ -9,6 +9,7 @@ import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/search_bar.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/upcoming_releases_list/upcoming_releases_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,30 +48,30 @@ class _HomePageState extends State<HomePage> {
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
-          const SizedBox(height: 32),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 64),
-            child: HelloBar(),
-          ),
-          const SizedBox(height: 20),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 52),
-            child: SearchBar(),
-          ),
-          const SizedBox(height: 28),
+          SizedBox(height: 32.h),
           Padding(
-            padding: const EdgeInsets.only(left: 52),
+            padding: const EdgeInsets.symmetric(horizontal: 64).r,
+            child: const HelloBar(),
+          ),
+          SizedBox(height: 20.h),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 52).r,
+            child: const SearchBar(),
+          ),
+          SizedBox(height: 28.h),
+          Padding(
+            padding: const EdgeInsets.only(left: 52).r,
             child: Text(
               'Most Popular',
               style: AppTextStyles.whiteS18Bold,
             ),
           ),
           const MostPopularView(),
-          const SizedBox(height: 4),
+          const SizedBox(height: 4.h),
           const ListOptions(),
-          const SizedBox(height: 36),
+          SizedBox(height: 36.h),
           Padding(
-            padding: const EdgeInsets.only(left: 52, bottom: 16),
+            padding: const EdgeInsets.only(left: 52, bottom: 16).r,
             child: Text(
               'Upcoming releases',
               style: AppTextStyles.whiteS18Bold,

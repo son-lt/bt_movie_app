@@ -8,6 +8,7 @@ import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
 import 'package:bt_movie_app/ui/widgets/inactive_overlay.dart';
 import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class UpcomingReleasesView extends StatefulWidget {
@@ -36,15 +37,15 @@ class _UpcomingReleasesViewState extends State<UpcomingReleasesView> {
       () {
         if (state.loadStatus.value == LoadStatus.loading) {
           return AppShimmer(
-            height: MediaQuery.of(context).size.height * 1 / 4,
-            margin: const EdgeInsets.symmetric(horizontal: 144),
+            height: 216.h,
+            margin: const EdgeInsets.symmetric(horizontal: 144).r,
             cornerRadius: 30,
           );
         } else if (state.loadStatus.value == LoadStatus.failure) {
           return AppErrorView(
-            height: MediaQuery.of(context).size.height * 1 / 4,
-            margin: const EdgeInsets.symmetric(horizontal: 144),
-            borderRadius: 30,
+            height: 216.h,
+            margin: const EdgeInsets.symmetric(horizontal: 144).r,
+            borderRadius: 30.r,
             onTap: () async {
               await logic.loadInitialData();
             },
@@ -65,7 +66,7 @@ class _UpcomingReleasesViewState extends State<UpcomingReleasesView> {
               );
             },
             length: state.listLength.value,
-            heightScaleFactor: 1 / 4,
+            height: 256.h,
           );
         }
       },
@@ -90,9 +91,9 @@ class _UpcomingReleasesViewState extends State<UpcomingReleasesView> {
             }
           : null,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 12).r,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30).r,
           image: DecorationImage(
             image: NetworkImage(AppConfigs.baseImageURL + src),
             fit: BoxFit.cover,

@@ -1,6 +1,7 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/common/app_vectors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class IMDBBadge extends StatelessWidget {
@@ -20,12 +21,13 @@ class IMDBBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4).r,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15).r,
         color: AppColors.imdbBadgeBackgroundColor,
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
@@ -33,7 +35,7 @@ class IMDBBadge extends StatelessWidget {
             width: width,
             height: height,
           ),
-          const SizedBox(width: 4),
+          SizedBox(width: 4.w),
           Text(
             rate,
             style: style,

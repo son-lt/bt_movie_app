@@ -1,6 +1,7 @@
 import 'package:bt_movie_app/common/app_colors.dart';
 import 'package:bt_movie_app/configs/app_configs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -16,12 +17,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 1 / 12,
-      width: MediaQuery.of(context).size.width,
+      height: 84.h,
+      width: double.infinity,
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColors.tertiaryColor,
-          width: 1,
+          width: 1.w,
         ),
         gradient: const LinearGradient(
           colors: AppColors.gradientBackgroundColor,
@@ -33,7 +34,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             colors: AppColors.gradientSearchBarBackgroundColor,
           ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 60),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 60).r,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -57,20 +58,20 @@ class CustomBottomNavigationBar extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 AppConfigs.bottomNavigationBarVectorList[index],
-                width: 24,
-                height: 24,
+                width: 24.h,
+                height: 24.h,
                 colorFilter: ColorFilter.mode(
                   isChoose ? Colors.white : AppColors.primaryColor,
                   BlendMode.srcIn,
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8.h),
               Visibility(
                 visible: isChoose,
-                replacement: const SizedBox(height: 4),
+                replacement: SizedBox(height: 4.h),
                 child: Container(
-                  width: 4,
-                  height: 4,
+                  width: 4.h,
+                  height: 4.h,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.white,

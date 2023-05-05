@@ -8,6 +8,7 @@ import 'package:bt_movie_app/ui/pages/detail_screen/widgets/bottom_sheet_widget.
 import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
 import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -55,14 +56,13 @@ class _DetailPageState extends State<DetailPage> {
   Widget _buildBody() {
     if (state.loadStatus.value == LoadStatus.loading) {
       return AppShimmer(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-      );
+        width: double.infinity,
+        height: double.infinity,
     } else if (state.loadStatus.value == LoadStatus.failure) {
       return AppErrorView(
         height: MediaQuery.of(context).size.height,
-        margin: const EdgeInsets.symmetric(horizontal: 144),
-        borderRadius: 30,
+        margin: const EdgeInsets.symmetric(horizontal: 144).r,
+        borderRadius: 30.r,
         onTap: () async {
           await logic.loadInitialData(widget.args.id);
         },
@@ -72,8 +72,8 @@ class _DetailPageState extends State<DetailPage> {
         children: [
           Image.network(
             AppConfigs.baseImageURL + (state.movieData.value.posterPath ?? ''),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            width: double.infinity,
+            height: double.infinity,
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress == null) {
@@ -90,18 +90,26 @@ class _DetailPageState extends State<DetailPage> {
             rate: state.movieData.value.voteAverage?.toStringAsFixed(1) ?? '',
             overview: state.movieData.value.overview ?? '',
             listCast: state.castListData.value.cast ?? [],
+            listLength: state.listLength.value,
+            showMoreCast: () {
+              provider.showMoreCast();
+            },
+            isShow: state.isShow.value,
+            showMoreText: () {
+              provider.setIsShow();
+            },
           ),
           Positioned(
-            left: 52,
-            top: 54,
+            left: 52.w,
+            top: 54.h,
             child: InkWell(
               onTap: () {
                 Navigator.of(context).pop();
               },
               child: SvgPicture.asset(
                 AppVectors.backVector,
-                width: 24,
-                height: 24,
+                width: 24.h,
+                height: 24.h,
                 colorFilter: ColorFilter.mode(
                   AppColors.primaryColor,
                   BlendMode.srcIn,
