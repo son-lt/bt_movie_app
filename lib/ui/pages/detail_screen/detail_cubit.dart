@@ -26,4 +26,14 @@ class DetailCubit extends Cubit<DetailState> {
       emit(state.copyWith(loadStatus: LoadStatus.failure));
     }
   }
+
+  void showMoreCast() {
+    listLength = castListData?.cast?.length ?? 0;
+    notifyListeners();
+  }
+
+  void setIsShow() {
+    isShow = !isShow;
+    notifyListeners();
+  }
 }

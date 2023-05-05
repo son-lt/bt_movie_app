@@ -1,5 +1,6 @@
 import 'package:bt_movie_app/models/enums/load_status.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most_popular_cubit.dart';
+import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most_popular_view_model.dart';
 import 'package:bt_movie_app/ui/widgets/app_page_view.dart';
 import 'package:bt_movie_app/ui/pages/home_screen/widgets/most_popular_list/most_popular_item.dart';
 import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
@@ -31,6 +32,19 @@ class MostPopularChildView extends StatefulWidget {
 class _MostPopularChildViewState extends State<MostPopularChildView> {
   late PageController _pageController;
   late final MostPopularCubit _cubit;
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+
+class MostPopularView extends StatefulWidget {
+  const MostPopularView({super.key});
+
+  @override
+  State<MostPopularView> createState() => _MostPopularViewState();
+}
+
+class _MostPopularViewState extends State<MostPopularView> {
+  late PageController _pageController;
+  late final MostPopularViewModel provider;
 
   @override
   void initState() {
@@ -82,7 +96,7 @@ class _MostPopularChildViewState extends State<MostPopularChildView> {
               );
             },
             length: state.listLength,
-            heightScaleFactor: 1 / 6,
+            heightScaleFactor: 180.h,
           );
         }
       },

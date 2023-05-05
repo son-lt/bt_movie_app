@@ -4,6 +4,7 @@ import 'package:bt_movie_app/ui/pages/detail_screen/detail_page.dart';
 import 'package:bt_movie_app/ui/widgets/imdb_badge.dart';
 import 'package:bt_movie_app/ui/widgets/inactive_overlay.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MostPopularItem extends StatelessWidget {
   final String title;
@@ -39,9 +40,9 @@ class MostPopularItem extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: 12,
           vertical: isCenter ? 16 : 28,
-        ),
+        ).r,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30).r,
           image: DecorationImage(
             image: NetworkImage(AppConfigs.baseImageURL + src),
             fit: BoxFit.cover,
@@ -52,18 +53,18 @@ class MostPopularItem extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              bottom: 20,
+              bottom: 20.h,
               left: 0,
               right: 0,
-              top: 20,
+              top: 20.h,
               child: Padding(
-                padding: const EdgeInsets.only(left: 28, right: 20),
+                padding: const EdgeInsets.only(left: 28, right: 20).r,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.5 - 76,
+                      width: 140.w,
                       child: Text(
                         title,
                         style: AppTextStyles.whiteS18Bold,
@@ -74,8 +75,8 @@ class MostPopularItem extends StatelessWidget {
                     IMDBBadge(
                       rate: score,
                       style: AppTextStyles.defaultS6Bold,
-                      width: 12,
-                      height: 4,
+                      width: 12.w,
+                      height: 4.h,
                     ),
                   ],
                 ),

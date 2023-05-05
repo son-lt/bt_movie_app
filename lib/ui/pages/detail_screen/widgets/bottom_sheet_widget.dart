@@ -6,6 +6,7 @@ import 'package:bt_movie_app/ui/pages/detail_screen/widgets/cast_list_view.dart'
 import 'package:bt_movie_app/ui/pages/detail_screen/widgets/overview_text.dart';
 import 'package:bt_movie_app/ui/widgets/imdb_badge.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomSheetWidget extends StatelessWidget {
@@ -15,6 +16,10 @@ class BottomSheetWidget extends StatelessWidget {
   final String rate;
   final String overview;
   final List<CastEntity> listCast;
+  final int listLength;
+  final Function() showMoreCast;
+  final bool isShow;
+  final Function() showMoreText;
 
   const BottomSheetWidget({
     Key? key,
@@ -24,6 +29,10 @@ class BottomSheetWidget extends StatelessWidget {
     required this.rate,
     required this.overview,
     required this.listCast,
+    required this.listLength,
+    required this.showMoreCast,
+    required this.isShow,
+    required this.showMoreText,
   }) : super(key: key);
 
   List<String> splitTitle(String title) {
@@ -46,20 +55,20 @@ class BottomSheetWidget extends StatelessWidget {
       snapSizes: const [0.5, 0.75],
       builder: (BuildContext context, ScrollController scrollController) {
         return Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
               colors: AppColors.gradientBackgroundColor,
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(50),
+              top: const Radius.circular(50).r,
             ),
           ),
           child: SingleChildScrollView(
             controller: scrollController,
-            padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 52, vertical: 12).r,
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.95,
               child: Column(
@@ -67,7 +76,7 @@ class BottomSheetWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset(AppVectors.lineVector),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Text(
                     lisTitle.first,
                     style: AppTextStyles.whiteS64Bold,
@@ -79,7 +88,7 @@ class BottomSheetWidget extends StatelessWidget {
                       style: AppTextStyles.secondaryS18Bold,
                       textAlign: TextAlign.center,
                     ),
-                  const SizedBox(height: 28),
+                  SizedBox(height: 28.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,11 +97,19 @@ class BottomSheetWidget extends StatelessWidget {
                       buildOptions(),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  OverviewText(overview: overview),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 16.h),
+                  OverviewText(
+                    overview: overview,
+                    isShow: isShow,
+                    showMoreText: showMoreText,
+                  ),
+                  SizedBox(height: 20.h),
                   Expanded(
-                    child: CastListView(listCast: listCast),
+                    child: CastListView(
+                      listCast: listCast,
+                      listLength: listLength,
+                      showMoreCast: showMoreCast,
+                    ),
                   ),
                 ],
               ),
@@ -112,8 +129,8 @@ class BottomSheetWidget extends StatelessWidget {
         IMDBBadge(
           rate: rate,
           style: AppTextStyles.defaultS12Bold,
-          width: 24,
-          height: 8,
+          width: 24.w,
+          height: 8.h,
         ),
       ],
     );
@@ -125,18 +142,18 @@ class BottomSheetWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppVectors.shareVector,
-          width: 24,
-          height: 28,
+          width: 24.w,
+          height: 28.h,
           colorFilter: ColorFilter.mode(
             AppColors.primaryColor,
             BlendMode.srcIn,
           ),
         ),
-        const SizedBox(width: 12),
+        SizedBox(width: 12.w),
         SvgPicture.asset(
           AppVectors.favoriteVector,
-          width: 24,
-          height: 24,
+          width: 24.h,
+          height: 24.h,
           colorFilter: ColorFilter.mode(
             AppColors.primaryColor,
             BlendMode.srcIn,
@@ -148,10 +165,10 @@ class BottomSheetWidget extends StatelessWidget {
 
   Widget buildBadge(String text) {
     return Container(
-      margin: const EdgeInsets.only(right: 12),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      margin: const EdgeInsets.only(right: 12).r,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4).r,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15).r,
         gradient: LinearGradient(
           colors: AppColors.gradientOptionItemBackgroundColor,
           begin: Alignment.centerLeft,

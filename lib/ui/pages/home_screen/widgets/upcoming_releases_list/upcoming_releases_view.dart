@@ -6,6 +6,7 @@ import 'package:bt_movie_app/ui/widgets/app_error_view.dart';
 import 'package:bt_movie_app/ui/widgets/inactive_overlay.dart';
 import 'package:bt_movie_app/ui/widgets/app_shimmer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'upcoming_releases_cubit.dart';
@@ -50,15 +51,15 @@ class _UpcomingReleasesChildViewState extends State<UpcomingReleasesChildView> {
       builder: (context, state) {
         if (state.loadStatus == LoadStatus.loading) {
           return AppShimmer(
-            height: MediaQuery.of(context).size.height * 1 / 4,
-            margin: const EdgeInsets.symmetric(horizontal: 144),
+            height: 216.h,
+            margin: const EdgeInsets.symmetric(horizontal: 144).r,
             cornerRadius: 30,
           );
         } else if (state.loadStatus == LoadStatus.failure) {
           return AppErrorView(
-            height: MediaQuery.of(context).size.height * 1 / 4,
-            margin: const EdgeInsets.symmetric(horizontal: 144),
-            borderRadius: 30,
+            height: 216.h,
+            margin: const EdgeInsets.symmetric(horizontal: 144).r,
+            borderRadius: 30.r,
             onTap: () async {
               await _cubit.loadInitialData();
             },
@@ -78,8 +79,8 @@ class _UpcomingReleasesChildViewState extends State<UpcomingReleasesChildView> {
                 id: state.data?.results?[index].id ?? 0,
               );
             },
+            height: 256.h,
             length: state.listLength,
-            heightScaleFactor: 1 / 4,
           );
         }
       },
@@ -104,9 +105,9 @@ class _UpcomingReleasesChildViewState extends State<UpcomingReleasesChildView> {
             }
           : null,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 12).r,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30).r,
           image: DecorationImage(
             image: NetworkImage(AppConfigs.baseImageURL + src),
             fit: BoxFit.cover,
