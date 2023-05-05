@@ -66,7 +66,7 @@ class _MostPopularViewState extends State<MostPopularView> {
                 id: state.data.value.results?[index].id ?? 0,
               );
             },
-            length: value.listLength.value,
+            length: state.listLength.value,
             height: 180.h,
           );
         }

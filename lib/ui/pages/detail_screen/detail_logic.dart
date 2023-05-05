@@ -20,4 +20,12 @@ class DetailLogic extends GetxController {
       state.loadStatus.value = LoadStatus.failure;
     }
   }
+
+  void showMoreCast() {
+    state.listLength.value = state.castListData.value.cast?.length ?? 0;
+  }
+
+  void setIsShow() {
+    state.isShow.value = !state.isShow.value;
+  }
 }

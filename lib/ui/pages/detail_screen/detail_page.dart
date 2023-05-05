@@ -55,9 +55,10 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _buildBody() {
     if (state.loadStatus.value == LoadStatus.loading) {
-      return AppShimmer(
+      return const AppShimmer(
         width: double.infinity,
         height: double.infinity,
+      );
     } else if (state.loadStatus.value == LoadStatus.failure) {
       return AppErrorView(
         height: MediaQuery.of(context).size.height,
@@ -92,11 +93,11 @@ class _DetailPageState extends State<DetailPage> {
             listCast: state.castListData.value.cast ?? [],
             listLength: state.listLength.value,
             showMoreCast: () {
-              provider.showMoreCast();
+              logic.showMoreCast();
             },
             isShow: state.isShow.value,
             showMoreText: () {
-              provider.setIsShow();
+              logic.setIsShow();
             },
           ),
           Positioned(

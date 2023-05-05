@@ -28,12 +28,14 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         body: _buildBody(),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: state.currentPage.value,
-          onPageChange: (value) {
-            logic.setCurrentPage(page: value);
-          },
-        ),
+        bottomNavigationBar: Obx(() {
+          return CustomBottomNavigationBar(
+            currentIndex: state.currentPage.value,
+            onPageChange: (value) {
+              logic.setCurrentPage(page: value);
+            },
+          );
+        }),
       ),
     );
   }
@@ -67,7 +69,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const MostPopularView(),
-          const SizedBox(height: 4.h),
+          SizedBox(height: 4.h),
           const ListOptions(),
           SizedBox(height: 36.h),
           Padding(

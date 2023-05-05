@@ -15,8 +15,7 @@ class UpcomingReleasesView extends StatefulWidget {
   const UpcomingReleasesView({super.key});
 
   @override
-  State<UpcomingReleasesView> createState() =>
-      _UpcomingReleasesViewState();
+  State<UpcomingReleasesView> createState() => _UpcomingReleasesViewState();
 }
 
 class _UpcomingReleasesViewState extends State<UpcomingReleasesView> {

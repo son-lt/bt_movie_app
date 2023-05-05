@@ -21,28 +21,27 @@ class MyApp extends StatelessWidget {
     );
 
     return ScreenUtilInit(
-        designSize: const Size(428, 926),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return MaterialApp(
-            title: 'Movie App',
-            theme: ThemeData(
-              textTheme: GoogleFonts.beVietnamProTextTheme(
-                Theme.of(context).textTheme,
-              ),
+      designSize: const Size(428, 926),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Movie App',
+          theme: ThemeData(
+            textTheme: GoogleFonts.beVietnamProTextTheme(
+              Theme.of(context).textTheme,
             ),
-            debugShowCheckedModeBanner: false,
-            builder: (context, child) {
-              return ScrollConfiguration(
-                behavior: DisableGlowBehavior(),
-                child: child!,
-              );
-            },
-            home: const HomePage(),
-          );
-        },
-      ),
+          ),
+          debugShowCheckedModeBanner: false,
+          builder: (context, child) {
+            return ScrollConfiguration(
+              behavior: DisableGlowBehavior(),
+              child: child!,
+            );
+          },
+          home: const HomePage(),
+        );
+      },
     );
   }
 }

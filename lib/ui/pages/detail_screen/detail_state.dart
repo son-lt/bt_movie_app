@@ -7,6 +7,8 @@ class DetailState {
   final Rx<LoadStatus> loadStatus = LoadStatus.initial.obs;
   final Rx<MovieEntity> movieData = MovieEntity().obs;
   final Rx<CastListEntity> castListData = CastListEntity().obs;
+  final Rx<int> listLength = 5.obs;
+  final Rx<bool> isShow = false.obs;
 
   DetailState();
 }
