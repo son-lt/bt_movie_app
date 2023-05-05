@@ -73,7 +73,9 @@ class _DetailChildPageState extends State<DetailChildPage> {
   Widget _buildBody() {
     return BlocBuilder<DetailCubit, DetailState>(
       buildWhen: (previous, current) =>
-          previous.loadStatus != current.loadStatus,
+          previous.loadStatus != current.loadStatus ||
+          previous.listLength != current.listLength ||
+          previous.isShow != current.isShow,
       builder: (context, state) {
         if (state.loadStatus == LoadStatus.loading) {
           return const AppShimmer(
@@ -113,12 +115,13 @@ class _DetailChildPageState extends State<DetailChildPage> {
                 overview: state.movieData?.overview ?? '',
                 listCast: state.castListData?.cast ?? [],
                 showMoreCast: () {
-                  provider.showMoreCast();
+                  _cubit.showMoreCast();
                 },
                 isShow: state.isShow,
                 showMoreText: () {
-                  provider.setIsShow();
+                  _cubit.setIsShow();
                 },
+                listLength: state.listLength,
               ),
               Positioned(
                 left: 52.w,

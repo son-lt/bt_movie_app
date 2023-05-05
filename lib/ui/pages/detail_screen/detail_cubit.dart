@@ -28,12 +28,10 @@ class DetailCubit extends Cubit<DetailState> {
   }
 
   void showMoreCast() {
-    listLength = castListData?.cast?.length ?? 0;
-    notifyListeners();
+    emit(state.copyWith(listLength: state.castListData?.cast?.length ?? 0));
   }
 
   void setIsShow() {
-    isShow = !isShow;
-    notifyListeners();
+    emit(state.copyWith(isShow: !state.isShow));
   }
 }
